@@ -3,7 +3,6 @@
 "use client";
 
 import Link from 'next/link';
-import { signIn } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import { MessageCircle, Zap, Shield, Globe, ArrowRight, Play, Pause } from 'lucide-react';
 import { Footer } from '@/components/Footer';
@@ -165,15 +164,7 @@ export default function Home() {
                 </button>
               </Link>
               
-              <button
-                onClick={() => signIn('google')}
-                className="px-8 py-4 bg-transparent border-2 border-zinc-700 text-white font-semibold rounded-full hover:border-zinc-500 hover:bg-zinc-900 transition-all duration-300 ease-out hover:scale-105 flex items-center gap-2"
-              >
-                <div className="w-5 h-5 bg-white rounded-sm flex items-center justify-center">
-                  <span className="text-black text-xs font-bold">G</span>
-                </div>
-                Continue with Google
-              </button>
+
             </div>
           </div>
 

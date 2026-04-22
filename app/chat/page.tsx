@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect, useRef } from 'react';
-import { useSession, signIn, signOut } from 'next-auth/react';
 import { uniqueNamesGenerator, adjectives, animals } from 'unique-names-generator';
 import { Send, Users, Wifi, WifiOff, ArrowLeft, Zap, Globe, Shield } from 'lucide-react';
 import { useRouter } from 'next/navigation';
@@ -15,7 +14,7 @@ interface Message {
 }
 
 export default function Chat() {
-  const { data: session } = useSession();
+
   const [name, setName] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState<string>('');
@@ -39,13 +38,9 @@ export default function Chat() {
   }, [messages]);
 
   useEffect(() => {
-    if (session) {
-      setName(session.user?.name || 'Anonymous');
-    } else {
-      const anonymousName = uniqueNamesGenerator({ dictionaries: [adjectives, animals], separator: ' ' });
-      setName(anonymousName);
-    }
-  }, [session]);
+    const anonymousName = uniqueNamesGenerator({ dictionaries: [adjectives, animals], separator: ' ' });
+    setName(anonymousName);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -230,23 +225,7 @@ export default function Chat() {
           <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
             <span className="text-xs font-bold text-black">{name.charAt(0).toUpperCase()}</span>
           </div>
-          {!session ? (
-            <button
-              onClick={() => signIn('google')}
-              className="px-3 py-1.5 bg-white text-black text-sm rounded-full hover:bg-white/80 transition-opacity font-medium focus:outline-none focus:ring-2 focus:ring-white/50 min-w-[44px] min-h-[44px] flex items-center justify-center"
-              aria-label="Sign in with Google"
-            >
-              Sign In
-            </button>
-          ) : (
-            <button
-              onClick={() => signOut()}
-              className="px-3 py-1.5 bg-black text-white/70 text-sm rounded-full hover:bg-white/10 transition-opacity border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 min-w-[44px] min-h-[44px] flex items-center justify-center"
-              aria-label="Sign out"
-            >
-              Sign Out
-            </button>
-          )}
+
         </div>
       </header>
 
