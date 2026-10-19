@@ -15,12 +15,12 @@ export default function Home() {
 
   const fullText = "Real-time. No history. Just now.";
   const messages = [
-    { user: "digital-nomad", text: "Anyone here from Tokyo? 🗾", delay: 0 },
-    { user: "night-owl", text: "Berlin checking in! 3AM coffee run ☕", delay: 2000 },
-    { user: "crypto-whale", text: "Market's going crazy tonight 📈", delay: 4000 },
+    { user: "digital-nomad", text: "Anyone here from Tokyo?", delay: 0 },
+    { user: "night-owl", text: "Berlin checking in! 3AM coffee run", delay: 2000 },
+    { user: "crypto-whale", text: "Market's going crazy tonight", delay: 4000 },
     { user: "zen-master", text: "Sometimes silence speaks loudest...", delay: 6000 },
-    { user: "pixel-artist", text: "Just dropped my latest NFT collection ✨", delay: 8000 },
-    { user: "code-ninja", text: "Debugging at 2AM hits different 💻", delay: 10000 }
+    { user: "pixel-artist", text: "Just dropped my latest NFT collection", delay: 8000 },
+    { user: "code-ninja", text: "Debugging at 2AM hits different", delay: 10000 }
   ];
 
   const [visibleMessages, setVisibleMessages] = useState<Array<{ user: string; text: string; delay: number }>>([]);
